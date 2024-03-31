@@ -14,7 +14,8 @@ describe("LeapYear", ()=> {
   it.each([
     3,
     1997,
-    1999
+    1999,
+
   ])("is false for year %i", (year) => {
     expect(LeapYear.for(year)).toBe(false)
   })
