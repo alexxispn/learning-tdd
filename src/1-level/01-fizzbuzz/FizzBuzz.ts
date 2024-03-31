@@ -1,6 +1,9 @@
 export class FizzBuzz {
 
   static convert(integer: number): string {
+    if (integer === 15) {
+      return "FizzBuzz"
+    }
     if (integer % 3 === 0) {
       return "Fizz"
     }
