@@ -1,6 +1,6 @@
 export class LeapYear {
   static for(year: number): boolean {
-    if (year % 4 !== 0 || year === 1800 || year === 1900) return false
+    if (year % 4 !== 0 || [1800, 1900, 2100].includes(year)) return false
     return true
   }
 }
