@@ -7,8 +7,14 @@ import { LeapYear } from "./LeapYear.js";
 // 1800 -> false (divisible by 4, divisible by 100, NOT divisible by 400)
 
 describe("LeapYear", () => {
-  it("is true for year 1996", () => {
-    expect(LeapYear.for(1996)).toBe(true);
+  describe("is true when is multiple of 4", () => {
+    it.each([
+      1996,
+      2000,
+      2020
+    ])("year %i", (year) => {
+      expect(LeapYear.for(year)).toBe(true);
+    });
   });
 
   describe("is true when is multiple of 400", () => {
