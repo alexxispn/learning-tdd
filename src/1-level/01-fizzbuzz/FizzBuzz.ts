@@ -1,7 +1,7 @@
 export class FizzBuzz {
 
   static convert(integer: number): string {
-    if ([3,6,9].includes(integer)) {
+    if (integer % 3 === 0) {
       return "Fizz"
     }
     return String(integer)
