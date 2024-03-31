@@ -20,10 +20,10 @@ import { FizzBuzz } from "./FizzBuzz.js";
 
 describe("FizzBuzz", () => {
   it.each([
-    1,
-    2,
-    4
-  ])("convert %s to string", (input) => {
-    expect(FizzBuzz.convert(input)).toBe(input.toString())
+    [1, "1"],
+    [2, "2"],
+    [4, "4"]
+  ])("convert %s to %s", (input, expected) => {
+    expect(FizzBuzz.convert(input)).toBe(expected)
   })
 })
