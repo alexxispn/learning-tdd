@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { LeapYear } from "./LeapYear.js";
 
 // 1997 -> false (not divisible by 4)
 // 1996 -> true (divisible by 4)
@@ -6,7 +7,7 @@ import { describe, expect, it } from "vitest";
 // 1800 -> false (divisible by 4, divisible by 100, NOT divisible by 400)
 
 describe("LeapYear", ()=> {
-  it("should return true", () => {
-    expect(true).toBe(true)
+  it("is true for year 1996", () => {
+    expect(LeapYear.for(1996)).toBe(true);
   });
 })
