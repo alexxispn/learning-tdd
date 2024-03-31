@@ -21,15 +21,13 @@ describe("LeapYear", () => {
     });
   });
 
-  it("is false for year 1800", () => {
-    expect(LeapYear.for(1800)).toBe(false);
-  });
-
-  it("is false for year 1900", () => {
-    expect(LeapYear.for(1900)).toBe(false);
-  });
-
-  it("is false for year 2100", () => {
-    expect(LeapYear.for(2100)).toBe(false);
-  });
+  describe("false when is multiple of 100 but not 400", () => {
+    it.each([
+      1800,
+      1900,
+      2100
+    ])("year %i", (year) => {
+      expect(LeapYear.for(year)).toBe(false)
+    })
+  })
 });
