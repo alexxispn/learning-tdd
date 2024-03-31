@@ -35,15 +35,11 @@ describe("FizzBuzz", () => {
     expect(FizzBuzz.convert(input)).toBe("Fizz")
   })
 
-  it("converts 5 to 'Buzz'", ()=> {
-    expect(FizzBuzz.convert(5)).toBe("Buzz")
-  })
-
-  it("converts 10 to 'Buzz'", ()=> {
-    expect(FizzBuzz.convert(10)).toBe("Buzz")
-  })
-
-  it("converts 20 to 'Buzz'", ()=> {
-    expect(FizzBuzz.convert(20)).toBe("Buzz")
+  it.each([
+    5,
+    10,
+    20
+  ])("convert %s to 'Buzz'", (input) => {
+    expect(FizzBuzz.convert(input)).toBe("Buzz")
   })
 })
