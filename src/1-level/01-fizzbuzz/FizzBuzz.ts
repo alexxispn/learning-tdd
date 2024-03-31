@@ -4,7 +4,7 @@ export class FizzBuzz {
     if (integer % 3 === 0) {
       return "Fizz"
     }
-    if ([5, 10, 20].includes(integer)) {
+    if (integer % 5 === 0) {
       return "Buzz"
     }
     return String(integer)
