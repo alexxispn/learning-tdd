@@ -19,13 +19,17 @@ describe("LeapYear", () => {
     ])("year %i", (year) => {
       expect(LeapYear.for(year)).toBe(false);
     });
-  })
+  });
 
   it("is false for year 1800", () => {
     expect(LeapYear.for(1800)).toBe(false);
-  })
+  });
 
   it("is false for year 1900", () => {
     expect(LeapYear.for(1900)).toBe(false);
-  })
+  });
+
+  it("is false for year 2100", () => {
+    expect(LeapYear.for(2100)).toBe(false);
+  });
 });
