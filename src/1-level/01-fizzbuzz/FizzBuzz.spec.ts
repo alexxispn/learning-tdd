@@ -42,4 +42,8 @@ describe("FizzBuzz", () => {
   ])("convert %s to 'Buzz'", (input) => {
     expect(FizzBuzz.convert(input)).toBe("Buzz")
   })
+
+  it("converts 15 to 'FizzBuzz'", () => {
+    expect(FizzBuzz.convert(15)).toBe("FizzBuzz")
+  })
 })
