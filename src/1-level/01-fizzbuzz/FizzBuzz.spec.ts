@@ -1,3 +1,6 @@
+import { describe, expect, it } from "vitest";
+import { FizzBuzz } from "./FizzBuzz.js";
+
 // Input  ->    Output
 // 1      ->    "1"
 // 2      ->    "2"
@@ -14,3 +17,13 @@
 // 13     ->    "13"
 // 14     ->    "14"
 // 15     ->    "FizzBuzz"
+
+describe("FizzBuzz", () => {
+  it("convert 1 to string", () => {
+    const fizzBuzz = new FizzBuzz()
+
+    const converted = fizzBuzz.convert(1)
+
+    expect(converted).toBe("1")
+  })
+})
