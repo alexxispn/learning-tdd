@@ -11,6 +11,16 @@ describe("LeapYear", () => {
     expect(LeapYear.for(1996)).toBe(true);
   });
 
+  describe("is true when is multiple of 400", () => {
+    it.each([
+      1600,
+      2000,
+      2400
+    ])("year %i", (year) => {
+      expect(LeapYear.for(year)).toBe(true);
+    });
+  });
+
   describe("false when is not multiple of 4", () => {
     it.each([
       3,
@@ -21,13 +31,13 @@ describe("LeapYear", () => {
     });
   });
 
-  describe("false when is multiple of 100 but not 400", () => {
+  describe("is false when is multiple of 100 but not 400", () => {
     it.each([
       1800,
       1900,
       2100
     ])("year %i", (year) => {
-      expect(LeapYear.for(year)).toBe(false)
-    })
-  })
+      expect(LeapYear.for(year)).toBe(false);
+    });
+  });
 });
