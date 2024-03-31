@@ -30,4 +30,8 @@ describe("FizzBuzz", () => {
   it("convert 3 to 'Fizz'", () => {
     expect(FizzBuzz.convert(3)).toBe("Fizz")
   })
+
+  it("convert 6 to 'Fizz'", () => {
+    expect(FizzBuzz.convert(6)).toBe("Fizz")
+  })
 })
