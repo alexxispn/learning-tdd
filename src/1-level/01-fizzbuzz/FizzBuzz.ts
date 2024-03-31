@@ -4,7 +4,7 @@ export class FizzBuzz {
     if (integer % 3 === 0) {
       return "Fizz"
     }
-    if (integer === 5) {
+    if (integer === 5 || integer === 10) {
       return "Buzz"
     }
     return String(integer)
