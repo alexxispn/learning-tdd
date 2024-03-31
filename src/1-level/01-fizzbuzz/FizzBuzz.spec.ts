@@ -23,19 +23,15 @@ describe("FizzBuzz", () => {
     [1, "1"],
     [2, "2"],
     [4, "4"]
-  ])("convert %s to %s", (input, expected) => {
+  ])("convert %s to '%s'", (input, expected) => {
     expect(FizzBuzz.convert(input)).toBe(expected)
   })
 
-  it("convert 3 to 'Fizz'", () => {
-    expect(FizzBuzz.convert(3)).toBe("Fizz")
-  })
-
-  it("convert 6 to 'Fizz'", () => {
-    expect(FizzBuzz.convert(6)).toBe("Fizz")
-  })
-
-  it("convert 9 to 'Fizz'", () => {
-    expect(FizzBuzz.convert(9)).toBe("Fizz")
+  it.each([
+    3,
+    6,
+    9
+  ])("convert %s to 'Fizz'", (input) => {
+    expect(FizzBuzz.convert(input)).toBe("Fizz")
   })
 })
