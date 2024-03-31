@@ -26,4 +26,12 @@ describe("FizzBuzz", () => {
 
     expect(converted).toBe("1")
   })
+
+  it("convert 2 to string", () => {
+    const fizzBuzz = new FizzBuzz()
+
+    const converted = fizzBuzz.convert(2)
+
+    expect(converted).toBe("2")
+  })
 })
