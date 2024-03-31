@@ -1,6 +1,6 @@
 export class FizzBuzz {
 
   convert(integer: number): string {
-    return "";
+    return "1";
   }
 }
