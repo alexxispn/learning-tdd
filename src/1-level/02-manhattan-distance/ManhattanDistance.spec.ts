@@ -20,24 +20,24 @@ describe("ManhattanDistance", () => {
 
   describe("when the points are on different locations", () => {
     it.each([
-      { origin: { x: 0, y: 0 }, destination: { x: 0, y: 1 }, expected: 1 },
-      { origin: { x: 0, y: 0 }, destination: { x: 1, y: 0 }, expected: 1 },
-      { origin: { x: 1, y: 1 }, destination: { x: 1, y: 0 }, expected: 1 },
-      { origin: { x: 0, y: 0 }, destination: { x: 1, y: 1 }, expected: 2 },
-      { origin: { x: 1, y: 1 }, destination: { x: 0, y: 0 }, expected: 2 },
-      { origin: { x: 0, y: 0 }, destination: { x: 2, y: 2 }, expected: 4 },
-      { origin: { x: 2, y: 2 }, destination: { x: 0, y: 0 }, expected: 4 },
-      { origin: { x: 0, y: 0 }, destination: { x: 2, y: 3 }, expected: 5 },
-      { origin: { x: 2, y: 3 }, destination: { x: 0, y: 0 }, expected: 5 },
-      { origin: { x: 0, y: 0 }, destination: { x: 3, y: 2 }, expected: 5 },
-      { origin: { x: 3, y: 2 }, destination: { x: 0, y: 0 }, expected: 5 }
-    ])("is %i between two points on the same axis", ({ origin, destination, expected }) => {
-      const originPoint = Point.at(origin.x, origin.y);
-      const destinationPoint = Point.at(destination.x, destination.y);
+      { originX: 0, originY: 0, destinationX: 0, destinationY: 1, expected: 1 },
+      { originX: 0, originY: 0, destinationX: 1, destinationY: 0, expected: 1 },
+      { originX: 1, originY: 1, destinationX: 1, destinationY: 0, expected: 1 },
+      { originX: 0, originY: 0, destinationX: 1, destinationY: 1, expected: 2 },
+      { originX: 1, originY: 1, destinationX: 0, destinationY: 0, expected: 2 },
+      { originX: 0, originY: 0, destinationX: 2, destinationY: 2, expected: 4 },
+      { originX: 2, originY: 2, destinationX: 0, destinationY: 0, expected: 4 },
+      { originX: 0, originY: 0, destinationX: 2, destinationY: 3, expected: 5 },
+      { originX: 2, originY: 3, destinationX: 0, destinationY: 0, expected: 5 },
+      { originX: 0, originY: 0, destinationX: 3, destinationY: 2, expected: 5 },
+      { originX: 3, originY: 2, destinationX: 0, destinationY: 0, expected: 5 }
+    ])("calculates the Manhattan distance from ($originX, $originY) to ($destinationX, $destinationY) as $expected", ({ originX, originY, destinationX, destinationY, expected }) => {
+      const origin = Point.at(originX, originY);
+      const destination = Point.at(destinationX, destinationY);
 
-      const manhattanDistance = ManhattanDistance.between(originPoint, destinationPoint);
+      const manhattanDistance = ManhattanDistance.between(origin, destination);
 
       expect(manhattanDistance).toBe(expected);
-    });
-  });
+    })
+  })
 });
