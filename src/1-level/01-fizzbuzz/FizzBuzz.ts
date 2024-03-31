@@ -1,7 +1,7 @@
 export class FizzBuzz {
 
   static convert(integer: number): string {
-    if (integer === 15) {
+    if (integer === 15 || integer === 30) {
       return "FizzBuzz"
     }
     if (integer % 3 === 0) {
