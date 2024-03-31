@@ -11,15 +11,11 @@ describe("LeapYear", ()=> {
     expect(LeapYear.for(1996)).toBe(true);
   });
 
-  it("is false for year 1997", () => {
-    expect(LeapYear.for(1997)).toBe(false);
-  });
-
-  it("is false for year 1999", () => {
-    expect(LeapYear.for(1999)).toBe(false);
-  });
-
-  it("is false for year 3", () => {
-    expect(LeapYear.for(3)).toBe(false);
-  });
+  it.each([
+    3,
+    1997,
+    1999
+  ])("is false for year %i", (year) => {
+    expect(LeapYear.for(year)).toBe(false)
+  })
 })
