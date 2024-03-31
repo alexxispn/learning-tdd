@@ -24,8 +24,6 @@ describe("FizzBuzz", () => {
     2,
     4
   ])("convert %s to string", (input) => {
-    const converted = FizzBuzz.convert(input)
-
-    expect(converted).toBe(input.toString())
+    expect(FizzBuzz.convert(input)).toBe(input.toString())
   })
 })
