@@ -24,4 +24,13 @@ describe("ManhattanDistance", () => {
 
     expect(manhattanDistance).toBe(0);
   });
+
+  it("is 2 between two points at {1, 1} and {0, 0}", () => {
+    const origin = Point.at(0, 0);
+    const destination = Point.at(1, 1);
+
+    const manhattanDistance = ManhattanDistance.between(origin, destination)
+
+    expect(manhattanDistance).toBe(2);
+  });
 })
