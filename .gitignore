@@ -15,6 +15,9 @@ dist/
 # Optional npm cache directory
 .npm
 
+# Optional pnpm
+pnpm-lock.yaml
+
 # Optional eslint cache
 .eslintcache
 
