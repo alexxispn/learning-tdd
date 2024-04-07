@@ -32,4 +32,13 @@ describe('RockPaperScissors', () => {
 
     expect(winner).toBe('Player two wins!')
   })
+
+  it('wins player two', () => {
+    const playerOneMove = RockPaperScissors.PAPER
+    const playerTwoMove = RockPaperScissors.SCISSORS
+
+    const winner = RockPaperScissors.play(playerOneMove, playerTwoMove)
+
+    expect(winner).toBe('Player two wins!')
+  })
 })
