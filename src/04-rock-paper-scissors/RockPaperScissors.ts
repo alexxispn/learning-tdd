@@ -6,7 +6,8 @@ export class RockPaperScissors {
   static play(playerOneMove: string, playerTwoMove: string) {
     if (
       (playerOneMove === RockPaperScissors.ROCK && playerTwoMove === RockPaperScissors.PAPER) ||
-      (playerOneMove === RockPaperScissors.PAPER && playerTwoMove === RockPaperScissors.SCISSORS)
+      (playerOneMove === RockPaperScissors.PAPER && playerTwoMove === RockPaperScissors.SCISSORS) ||
+      (playerOneMove === RockPaperScissors.SCISSORS && playerTwoMove === RockPaperScissors.ROCK)
     ) {
       return "Player two wins!"
     }
