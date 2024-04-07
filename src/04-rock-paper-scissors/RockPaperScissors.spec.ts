@@ -14,19 +14,11 @@ import { RockPaperScissors } from "./RockPaperScissors.js";
 // playerOne = RockPaperScissors.SCISSORS && playerTwo = RockPaperScissors.SCISSORS => RockPaperScissors.DRAW
 
 describe('RockPaperScissors', () => {
-  it('wins player one', () => {
-    const playerOneMove = RockPaperScissors.ROCK
-    const playerTwoMove = RockPaperScissors.SCISSORS
-
-    const winner = RockPaperScissors.play(playerOneMove, playerTwoMove)
-
-    expect(winner).toBe('Player one wins!')
-  })
-
-  it('wins player one', () => {
-    const playerOneMove = RockPaperScissors.SCISSORS
-    const playerTwoMove = RockPaperScissors.PAPER
-
+  it.each([
+    [RockPaperScissors.ROCK, RockPaperScissors.SCISSORS],
+    [RockPaperScissors.PAPER, RockPaperScissors.ROCK],
+    [RockPaperScissors.SCISSORS, RockPaperScissors.PAPER]
+  ])('wins player one', (playerOneMove, playerTwoMove) => {
     const winner = RockPaperScissors.play(playerOneMove, playerTwoMove)
 
     expect(winner).toBe('Player one wins!')
