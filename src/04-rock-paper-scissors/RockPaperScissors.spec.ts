@@ -1,4 +1,5 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
+import { RockPaperScissors } from "./RockPaperScissors.js";
 
 // playerOne = RockPaperScissors.ROCK && playerTwo = RockPaperScissors.SCISSORS => playerOne
 // playerOne = RockPaperScissors.PAPER && playerTwo = RockPaperScissors.ROCK => playerOne
@@ -11,15 +12,6 @@ import { describe, it, expect } from "vitest";
 // playerOne = RockPaperScissors.ROCK && playerTwo = RockPaperScissors.ROCK => RockPaperScissors.DRAW
 // playerOne = RockPaperScissors.PAPER && playerTwo = RockPaperScissors.PAPER => RockPaperScissors.DRAW
 // playerOne = RockPaperScissors.SCISSORS && playerTwo = RockPaperScissors.SCISSORS => RockPaperScissors.DRAW
-
-class RockPaperScissors {
-  static ROCK = 'rock'
-  static SCISSORS = 'scissors'
-
-  static play(playerOneMove: string, playerTwoMove: string) {
-    return 'Player one wins!'
-  }
-}
 
 describe('RockPaperScissors', () => {
   it('wins playerOne', () => {
