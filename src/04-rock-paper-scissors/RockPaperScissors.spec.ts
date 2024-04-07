@@ -12,7 +12,22 @@ import { describe, it, expect } from "vitest";
 // playerOne = RockPaperScissors.PAPER && playerTwo = RockPaperScissors.PAPER => RockPaperScissors.DRAW
 // playerOne = RockPaperScissors.SCISSORS && playerTwo = RockPaperScissors.SCISSORS => RockPaperScissors.DRAW
 
+class RockPaperScissors {
+  static ROCK = 'rock'
+  static SCISSORS = 'scissors'
+
+  static play(playerOneMove: string, playerTwoMove: string) {
+    return ''
+  }
+}
+
 describe('RockPaperScissors', () => {
-  it('', () => {
+  it('wins playerOne', () => {
+    const playerOneMove = RockPaperScissors.ROCK
+    const playerTwoMove = RockPaperScissors.SCISSORS
+
+    const winner = RockPaperScissors.play(playerOneMove, playerTwoMove)
+
+    expect(winner).toBe('Player one wins!')
   })
 })
