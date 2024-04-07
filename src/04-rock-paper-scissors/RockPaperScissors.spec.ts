@@ -23,29 +23,11 @@ describe("RockPaperScissors", () => {
 
     expect(winner).toBe("Player one wins!")
   })
-
-  it("wins player two", () => {
-    const playerOneMove = RockPaperScissors.ROCK
-    const playerTwoMove = RockPaperScissors.PAPER
-
-    const winner = RockPaperScissors.play(playerOneMove, playerTwoMove)
-
-    expect(winner).toBe("Player two wins!")
-  })
-
-  it("wins player two", () => {
-    const playerOneMove = RockPaperScissors.PAPER
-    const playerTwoMove = RockPaperScissors.SCISSORS
-
-    const winner = RockPaperScissors.play(playerOneMove, playerTwoMove)
-
-    expect(winner).toBe("Player two wins!")
-  })
-
-  it("wins player two", () => {
-    const playerOneMove = RockPaperScissors.SCISSORS
-    const playerTwoMove = RockPaperScissors.ROCK
-
+  it.each([
+    [RockPaperScissors.ROCK, RockPaperScissors.PAPER],
+    [RockPaperScissors.PAPER, RockPaperScissors.SCISSORS],
+    [RockPaperScissors.SCISSORS, RockPaperScissors.ROCK],
+  ])("wins player two", (playerOneMove, playerTwoMove) => {
     const winner = RockPaperScissors.play(playerOneMove, playerTwoMove)
 
     expect(winner).toBe("Player two wins!")
