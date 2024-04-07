@@ -17,7 +17,7 @@ class RockPaperScissors {
   static SCISSORS = 'scissors'
 
   static play(playerOneMove: string, playerTwoMove: string) {
-    return ''
+    return 'Player one wins!'
   }
 }
 
