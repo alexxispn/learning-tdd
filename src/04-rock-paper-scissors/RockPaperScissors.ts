@@ -13,7 +13,7 @@ export class RockPaperScissors {
     [MOVE.SCISSORS]: MOVE.PAPER,
   }
 
-  static play(playerOneMove: string, playerTwoMove: string): Result {
+  static play(playerOneMove: MOVE, playerTwoMove: MOVE): Result {
     if (playerOneMove === playerTwoMove) {
       return "Draw!"
     }
