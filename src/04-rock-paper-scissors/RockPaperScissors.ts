@@ -1,21 +1,24 @@
 type Result = "Player one wins!" | "Player two wins!" | "Draw!"
 
+export enum MOVE {
+  ROCK = "rock",
+  PAPER = "paper",
+  SCISSORS = "scissors",
+}
+
 export class RockPaperScissors {
-  static ROCK = "rock"
-  static PAPER = "paper"
-  static SCISSORS = "scissors"
+  private static readonly WINNING_MOVES = {
+    [MOVE.ROCK]: MOVE.SCISSORS,
+    [MOVE.PAPER]: MOVE.ROCK,
+    [MOVE.SCISSORS]: MOVE.PAPER,
+  }
 
   static play(playerOneMove: string, playerTwoMove: string): Result {
     if (playerOneMove === playerTwoMove) {
       return "Draw!"
     }
-    if (
-      (playerOneMove === RockPaperScissors.ROCK && playerTwoMove === RockPaperScissors.PAPER) ||
-      (playerOneMove === RockPaperScissors.PAPER && playerTwoMove === RockPaperScissors.SCISSORS) ||
-      (playerOneMove === RockPaperScissors.SCISSORS && playerTwoMove === RockPaperScissors.ROCK)
-    ) {
-      return "Player two wins!"
-    }
-    return "Player one wins!"
+    return RockPaperScissors.WINNING_MOVES[playerOneMove as MOVE] === playerTwoMove
+      ? "Player one wins!"
+      : "Player two wins!"
   }
 }
