@@ -4,6 +4,9 @@ export class RockPaperScissors {
   static SCISSORS = "scissors"
 
   static play(playerOneMove: string, playerTwoMove: string) {
+    if (playerOneMove === playerTwoMove) {
+      return "Draw!"
+    }
     if (
       (playerOneMove === RockPaperScissors.ROCK && playerTwoMove === RockPaperScissors.PAPER) ||
       (playerOneMove === RockPaperScissors.PAPER && playerTwoMove === RockPaperScissors.SCISSORS) ||
