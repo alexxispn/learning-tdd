@@ -42,22 +42,18 @@ export class StringCalculator {
     return hasCustomDelimiter ? this.extractCustomDelimiter(text) : StringCalculator.defaultDelimiters
   }
 
-  private extractCustomDelimiter(text: string) {
-    const hasMultipleSingleCharDelimiters = text.includes("//[") && text.includes("][")
-    if (hasMultipleSingleCharDelimiters) {
-      return text
-        .slice(3, text.indexOf("\n"))
-        .split("][")
-        .map((delimiter) => delimiter.replace("[", "").replace("]", ""))
+  private extractCustomDelimiter(text: string): string[] {
+    const endOfDelimitersIndex = text.indexOf("\n")
+    const delimiterFragment = text.substring(2, endOfDelimitersIndex)
+
+    if (delimiterFragment.startsWith("[")) {
+      return this.extractMultipleDelimiters(delimiterFragment)
     }
-    const hasCustomMultipleCharacterDelimiter = text.startsWith("//[")
-    if (hasCustomMultipleCharacterDelimiter) {
-      return [text.slice(3, text.indexOf("]"))]
-    }
-    const hasCustomSingleCharacterDelimiter = text.startsWith("//")
-    if (hasCustomSingleCharacterDelimiter) {
-      return [text.slice(2, 3)]
-    }
-    return [""]
+
+    return [delimiterFragment]
+  }
+
+  private extractMultipleDelimiters(delimiterFragment: string) {
+    return delimiterFragment.substring(1, delimiterFragment.length - 1).split("][")
   }
 }
