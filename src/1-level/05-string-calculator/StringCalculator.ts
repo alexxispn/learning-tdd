@@ -15,12 +15,9 @@ export class StringCalculator {
   }
 
   private parseToNumbers(values: string[]): number[] {
-    return values.map((number) => {
-      const parsedNumber = Number(number)
-      if (isNaN(parsedNumber)) {
-        throw new Error(StringCalculator.INVALID_INPUT_ERROR_MESSAGE)
-      }
-      return parsedNumber
-    })
+    if (values.some((value) => isNaN(Number(value)))) {
+      throw new Error(StringCalculator.INVALID_INPUT_ERROR_MESSAGE)
+    }
+    return values.map(Number)
   }
 }
