@@ -3,7 +3,8 @@ import { NegativeNumbersNotAllowedError } from "./NegativeNumbersNotAllowedError
 export class StringCalculator {
   add(text: string): number {
     const customDelimiter = this.extractCustomDelimiter(text)
-    const extractedValues = this.extractValues(text, customDelimiter)
+    const textWithoutCustomDelimiterPart = this.removeCustomDelimiterPart(text, customDelimiter)
+    const extractedValues = this.extractValues(textWithoutCustomDelimiterPart, customDelimiter)
     const numbers = this.parseToNumbers(extractedValues)
     return this.sumNumbers(numbers)
   }
@@ -27,10 +28,18 @@ export class StringCalculator {
   private extractValues(text: string, customDelimiter: string): string[] {
     const delimiters = [",", "\n", customDelimiter]
     const delimiterRegex = new RegExp(`[${delimiters.join("")}]`)
-    return customDelimiter ? text.slice(4).split(customDelimiter) : text.split(delimiterRegex)
+    return text.split(delimiterRegex)
   }
 
   private extractCustomDelimiter(text: string) {
     return text.startsWith("//") ? text[2] : ""
+  }
+
+  private removeCustomDelimiterPart = (text: string, customDelimiter: string) => {
+    if (customDelimiter) {
+      const customDelimiterPart = text.slice(0, 4)
+      text = text.slice(customDelimiterPart.length)
+    }
+    return text
   }
 }
