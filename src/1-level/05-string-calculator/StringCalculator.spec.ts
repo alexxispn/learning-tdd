@@ -5,10 +5,10 @@ import { StringCalculator } from "./StringCalculator.js"
 // "4"      ->    4     -> one number   ->  the number
 // "1, 2"   ->    3     -> two numbers  ->  the sum
 describe("StringCalculator", () => {
-  it("adds 0 when it doesn't receive any numbers", () => {
+  it.each(["", " ", "  ", "   ", "    "])("adds 0 when it receives an empty string", (numbers) => {
     const stringCalculator = new StringCalculator()
 
-    const sum = stringCalculator.add("")
+    const sum = stringCalculator.add(numbers)
 
     expect(sum).toBe(0)
   })
