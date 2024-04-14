@@ -10,7 +10,7 @@ export class StringCalculator {
   }
 
   private extractNumbers(text: string): number[] {
-    const values = text.split(",").flatMap((value) => value.split("\n"))
+    const values = text.split(/[,\n]/)
     return this.parseToNumbers(values)
   }
 
