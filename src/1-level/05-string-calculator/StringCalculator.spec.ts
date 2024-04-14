@@ -20,4 +20,12 @@ describe("StringCalculator", () => {
 
     expect(sum).toBe(4)
   })
+
+  it.each(["1", "2", "3", "4", "5", "6", "7", "8", "9"])("adds the number when it receives one number", (number) => {
+    const stringCalculator = new StringCalculator()
+
+    const sum = stringCalculator.add(number)
+
+    expect(sum).toBe(Number(number))
+  })
 })
