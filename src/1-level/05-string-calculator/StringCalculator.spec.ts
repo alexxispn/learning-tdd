@@ -56,4 +56,12 @@ describe("StringCalculator", () => {
 
     expect(sum).toBe(6)
   })
+
+  it("adds the sum when numbers are separated by a custom delimiter", () => {
+    const stringCalculator = new StringCalculator()
+
+    const sum = stringCalculator.add("//;\n1;2")
+
+    expect(sum).toBe(3)
+  })
 })
