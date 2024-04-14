@@ -60,10 +60,15 @@ describe("StringCalculator", () => {
     },
   )
 
-  it("throws if receive negative numbers", () => {
+  it.each([
+    ["1, -2, -3", [-2, -3]],
+    ["1, -2, 3, -4, 5", [-2, -4]],
+    ["1, -2, 3, -4, 5, -6, 7", [-2, -4, -6]],
+    ["1, -2, 3, -4, 5, -6, 7, -8, 9", [-2, -4, -6, -8]],
+  ])("throws if receive negative numbers", (numbers, negativeNumbers) => {
     const stringCalculator = new StringCalculator()
 
-    expect(() => stringCalculator.add("1, -2, -3")).toThrowError(new NegativeNumbersNotAllowedError([-2, -3]))
+    expect(() => stringCalculator.add(numbers)).toThrowError(new NegativeNumbersNotAllowedError(negativeNumbers))
   })
 
   it.each(["a", "%", "!", "a, b", "a, b, c", "a, b, c, d"])("ignores non-numeric values", (numbers) => {
