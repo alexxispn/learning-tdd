@@ -40,4 +40,12 @@ describe("StringCalculator", () => {
 
     expect(sum).toBe(expectedSum)
   })
+
+  it("adds the sum when it receives multiple numbers", () => {
+    const stringCalculator = new StringCalculator()
+
+    const sum = stringCalculator.add("1, 2, 3, 4, 5, 6, 7, 8, 9")
+
+    expect(sum).toBe(45)
+  })
 })
