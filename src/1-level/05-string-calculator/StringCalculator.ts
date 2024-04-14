@@ -12,7 +12,12 @@ export class StringCalculator {
   }
 
   private extractValues(text: string): string[] {
-    return text.split(/[,\n]/)
+    const defaultDelimiters = [",", "\n"]
+    const hasCustomDelimiter = text.startsWith("//")
+    const delimiters = hasCustomDelimiter ? [text[2], ...defaultDelimiters] : defaultDelimiters
+    const values = hasCustomDelimiter ? text.slice(4) : text
+    const regex = new RegExp(`[${delimiters.join()}]`)
+    return values.split(regex)
   }
 
   private parseToNumbers(values: string[]): number[] {
