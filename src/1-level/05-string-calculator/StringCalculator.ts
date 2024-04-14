@@ -5,12 +5,16 @@ export class StringCalculator {
     return this.sumNumbers(this.extractNumbers(numbers))
   }
 
-  private sumNumbers(extractedNumbers: number[]) {
+  private sumNumbers(extractedNumbers: number[]): number {
     return extractedNumbers.reduce((sum, number) => sum + number, 0)
   }
 
-  private extractNumbers(text: string) {
+  private extractNumbers(text: string): number[] {
     const values = text.split(",").flatMap((value) => value.split("\n"))
+    return this.parseToNumbers(values)
+  }
+
+  private parseToNumbers(values: string[]): number[] {
     return values.map((number) => {
       const parsedNumber = Number(number)
       if (isNaN(parsedNumber)) {
