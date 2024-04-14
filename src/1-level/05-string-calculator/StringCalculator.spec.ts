@@ -21,14 +21,6 @@ describe("StringCalculator", () => {
     expect(sum).toBe(Number(number))
   })
 
-  it("adds the sum when it receives two numbers", () => {
-    const stringCalculator = new StringCalculator()
-
-    const sum = stringCalculator.add("1, 2")
-
-    expect(sum).toBe(3)
-  })
-
   it.each([
     ["1", "2", 3],
     ["3", "4", 7],
