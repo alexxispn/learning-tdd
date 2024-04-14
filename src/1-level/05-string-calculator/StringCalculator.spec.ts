@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest"
-import { StringCalculator } from "./StringCalculator.js"
 import { NegativeNumbersNotAllowedError } from "./NegativeNumbersNotAllowedError.js"
+import { StringCalculator } from "./StringCalculator.js"
 
 describe("StringCalculator", () => {
   it.each(["", " ", "  ", "   ", "    "])("adds 0 when it receives an empty string", (numbers) => {
@@ -105,4 +105,15 @@ describe("StringCalculator", () => {
 
     expect(sum).toBe(expectedSum)
   })
+
+  it.each([["//[*][%]\n1*2%3", 6]])(
+    "adds the sum when it multiple single-length custom delimiters",
+    (numbers, expectedSum) => {
+      const stringCalculator = new StringCalculator()
+
+      const sum = stringCalculator.add(numbers)
+
+      expect(sum).toBe(expectedSum)
+    },
+  )
 })
