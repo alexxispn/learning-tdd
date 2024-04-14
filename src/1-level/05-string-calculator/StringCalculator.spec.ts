@@ -79,11 +79,16 @@ describe("StringCalculator", () => {
     expect(sum).toBe(0)
   })
 
-  it("ignores numbers greater than 1000", () => {
+  it.each([
+    ["1001, 2", 2],
+    ["1000, 2", 1002],
+    ["1000, 1000", 2000],
+    ["1001, 1001", 0],
+  ])("ignores numbers greater than 1000", (numbers, expectedSum) => {
     const stringCalculator = new StringCalculator()
 
-    const sum = stringCalculator.add("1001, 2")
+    const sum = stringCalculator.add(numbers)
 
-    expect(sum).toBe(2)
+    expect(sum).toBe(expectedSum)
   })
 })
