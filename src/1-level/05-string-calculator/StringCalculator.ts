@@ -1,8 +1,5 @@
 export class StringCalculator {
   add(numbers: string): number {
-    if (numbers === "") {
-      return 0
-    }
-    return 4
+    return Number(numbers)
   }
 }
