@@ -18,11 +18,15 @@ export class StringCalculator {
     if (values.some((value) => isNaN(Number(value)))) {
       throw new Error(StringCalculator.INVALID_INPUT_ERROR_MESSAGE)
     }
+    this.ensureHasNoNegativeNumbers(values)
+    return values.map(Number)
+  }
+
+  private ensureHasNoNegativeNumbers(values: string[]): void {
     const negativeNumbers = values.map(Number).filter((number) => number < 0)
     if (negativeNumbers.length) {
       throw new NegativeNumbersNotAllowedError(negativeNumbers)
     }
-    return values.map(Number)
   }
 
   private extractValues(text: string, customDelimiter: string): string[] {
