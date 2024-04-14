@@ -1,8 +1,6 @@
 export class StringCalculator {
   add(numbers: string): number {
-    if (numbers.length <= 1) {
-      return Number(numbers)
-    }
-    return 3
+    const numbersArray: number[] = numbers.split(",").map(Number)
+    return numbersArray.reduce((sum, number) => sum + number, 0)
   }
 }
