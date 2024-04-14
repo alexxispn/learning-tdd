@@ -1,6 +1,9 @@
 export class StringCalculator {
   add(numbers: string): number {
-    const extractedNumbers = this.extractNumbers(numbers)
+    return this.sumNumbers(this.extractNumbers(numbers))
+  }
+
+  private sumNumbers(extractedNumbers: number[]) {
     return extractedNumbers.reduce((sum, number) => sum + number, 0)
   }
 
