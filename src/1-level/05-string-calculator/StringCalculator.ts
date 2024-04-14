@@ -1,17 +1,18 @@
 export class StringCalculator {
   static readonly INVALID_INPUT_ERROR_MESSAGE = "Invalid input"
 
-  add(numbers: string): number {
-    return this.sumNumbers(this.extractNumbers(numbers))
+  add(text: string): number {
+    const extractedValues = this.extractValues(text)
+    const numbers = this.parseToNumbers(extractedValues)
+    return this.sumNumbers(numbers)
   }
 
   private sumNumbers(extractedNumbers: number[]): number {
     return extractedNumbers.reduce((sum, number) => sum + number, 0)
   }
 
-  private extractNumbers(text: string): number[] {
-    const values = text.split(/[,\n]/)
-    return this.parseToNumbers(values)
+  private extractValues(text: string): string[] {
+    return text.split(/[,\n]/)
   }
 
   private parseToNumbers(values: string[]): number[] {
