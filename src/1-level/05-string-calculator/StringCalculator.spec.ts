@@ -12,4 +12,12 @@ describe("StringCalculator", () => {
 
     expect(sum).toBe(0)
   })
+
+  it("adds the number when it receives one number", () => {
+    const stringCalculator = new StringCalculator()
+
+    const sum = stringCalculator.add("4")
+
+    expect(sum).toBe(4)
+  })
 })
