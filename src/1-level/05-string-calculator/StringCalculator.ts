@@ -37,7 +37,17 @@ export class StringCalculator {
   }
 
   private extractCustomDelimiter(text: string) {
-    return text.startsWith("//") ? text[2] : ""
+    const hasCustomMultipleCharacterDelimiter = text.startsWith("//[")
+    const hasCustomSingleCharacterDelimiter = text.startsWith("//")
+    if (hasCustomMultipleCharacterDelimiter) {
+      const customDelimiter = text.slice(3, text.indexOf("]"))
+      return customDelimiter
+    }
+    if (hasCustomSingleCharacterDelimiter) {
+      const customDelimiter = text.slice(2, 3)
+      return customDelimiter
+    }
+    return ""
   }
 
   private removeCustomDelimiterPart = (text: string, customDelimiter: string) => {
