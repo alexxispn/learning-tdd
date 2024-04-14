@@ -1,9 +1,11 @@
 import { NegativeNumbersNotAllowedError } from "./NegativeNumbersNotAllowedError.js"
 
 export class StringCalculator {
+  private static readonly defaultDelimiters = [",", "\n"]
+
   add(text: string): number {
-    const customDelimiter = this.extractCustomDelimiter(text)
-    const extractedValues = this.extractValues(text, customDelimiter)
+    const delimiters = this.getDelimiters(text)
+    const extractedValues = this.extractValues(text, delimiters)
     const numbers = this.parseToNumbers(extractedValues)
     const validNumbers = this.removeNumbersGreaterThan1000(numbers)
     return this.sumNumbers(validNumbers)
@@ -33,6 +35,11 @@ export class StringCalculator {
     const delimiters = [",", "\n", ...customDelimiter]
     const delimiterRegex = new RegExp(`[${delimiters.join("")}]`)
     return text.split(delimiterRegex)
+  }
+
+  private getDelimiters(text: string) {
+    const hasCustomDelimiter = text.startsWith("//")
+    return hasCustomDelimiter ? this.extractCustomDelimiter(text) : StringCalculator.defaultDelimiters
   }
 
   private extractCustomDelimiter(text: string) {
