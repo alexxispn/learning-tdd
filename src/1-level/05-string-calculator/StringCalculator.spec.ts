@@ -92,11 +92,17 @@ describe("StringCalculator", () => {
     expect(sum).toBe(expectedSum)
   })
 
-  it("adds the sum when it receives a custom delimiter with multiple characters", () => {
+  it.each([
+    ["//[***]\n1***2***3", 6],
+    ["//[---]\n1---2---3", 6],
+    ["//[...]\n1...2...3", 6],
+    ["//[////]\n1////2////3", 6],
+    ["//[*****]\n1*****2*****3", 6],
+  ])("adds the sum when it receives a custom delimiter with multiple characters", (numbers, expectedSum) => {
     const stringCalculator = new StringCalculator()
 
-    const sum = stringCalculator.add("//[***]\n1***2***3")
+    const sum = stringCalculator.add(numbers)
 
-    expect(sum).toBe(6)
+    expect(sum).toBe(expectedSum)
   })
 })
