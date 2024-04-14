@@ -5,7 +5,7 @@ import { StringCalculator } from "./StringCalculator.js"
 // "4"      ->    4     -> one number   ->  the number
 // "1, 2"   ->    3     -> two numbers  ->  the sum
 describe("StringCalculator", () => {
-  it("sum 0 for empty string", () => {
+  it("adds 0 when it doesn't receive any numbers", () => {
     const stringCalculator = new StringCalculator()
 
     const sum = stringCalculator.add("")
