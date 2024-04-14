@@ -1,8 +1,6 @@
 import { NegativeNumbersNotAllowedError } from "./NegativeNumbersNotAllowedError.js"
 
 export class StringCalculator {
-  static readonly INVALID_INPUT_ERROR_MESSAGE = "Invalid input"
-
   add(text: string): number {
     const customDelimiter = this.extractCustomDelimiter(text)
     const extractedValues = this.extractValues(text, customDelimiter)
@@ -15,11 +13,8 @@ export class StringCalculator {
   }
 
   private parseToNumbers(values: string[]): number[] {
-    if (values.some((value) => isNaN(Number(value)))) {
-      throw new Error(StringCalculator.INVALID_INPUT_ERROR_MESSAGE)
-    }
     this.ensureHasNoNegativeNumbers(values)
-    return values.map(Number)
+    return values.map(Number).filter((number) => !isNaN(number))
   }
 
   private ensureHasNoNegativeNumbers(values: string[]): void {

@@ -11,15 +11,6 @@ describe("StringCalculator", () => {
     expect(sum).toBe(0)
   })
 
-  it.each(["a", "%", "!", "a, b", "a, b, c", "a, b, c, d"])(
-    "throws an error when it receives invalid input",
-    (numbers) => {
-      const stringCalculator = new StringCalculator()
-
-      expect(() => stringCalculator.add(numbers)).toThrowError(StringCalculator.INVALID_INPUT_ERROR_MESSAGE)
-    },
-  )
-
   it.each(["1", "2", "3", "4", "5", "6", "7", "8", "9"])("adds the number when it receives one number", (number) => {
     const stringCalculator = new StringCalculator()
 
@@ -73,5 +64,13 @@ describe("StringCalculator", () => {
     const stringCalculator = new StringCalculator()
 
     expect(() => stringCalculator.add("1, -2, -3")).toThrowError(new NegativeNumbersNotAllowedError([-2, -3]))
+  })
+
+  it.each(["a", "%", "!", "a, b", "a, b, c", "a, b, c, d"])("ignores non-numeric values", (numbers) => {
+    const stringCalculator = new StringCalculator()
+
+    const sum = stringCalculator.add(numbers)
+
+    expect(sum).toBe(0)
   })
 })
