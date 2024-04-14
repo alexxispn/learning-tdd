@@ -109,6 +109,10 @@ describe("StringCalculator", () => {
   it.each([
     ["//[*][%]\n1*2%3", 6],
     ["//[@][^]\n1@2^3", 6],
+    ["//[$][&]\n1$2&3", 6],
+    ["//[*][%][@]\n1*2%3@4", 10],
+    ["//[$][&][*]\n1$2&3*4", 10],
+    ["//[$][&][*][%]\n1$2&3*4%5", 15],
   ])("adds the sum when it adds multiple single-length custom delimiters", (numbers, expectedSum) => {
     const stringCalculator = new StringCalculator()
 
