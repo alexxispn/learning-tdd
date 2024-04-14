@@ -6,7 +6,7 @@ export class StringCalculator {
     const textWithoutCustomDelimiterPart = this.removeCustomDelimiterPart(text, customDelimiter)
     const extractedValues = this.extractValues(textWithoutCustomDelimiterPart, customDelimiter)
     const numbers = this.parseToNumbers(extractedValues)
-    const validNumbers = this.validateNumbers(numbers)
+    const validNumbers = this.removeNumbersGreaterThan1000(numbers)
     return this.sumNumbers(validNumbers)
   }
 
@@ -14,7 +14,7 @@ export class StringCalculator {
     return extractedNumbers.reduce((sum, number) => sum + number, 0)
   }
 
-  private validateNumbers(numbers: number[]) {
+  private removeNumbersGreaterThan1000(numbers: number[]): number[] {
     return numbers.filter((number) => number <= 1000)
   }
 
