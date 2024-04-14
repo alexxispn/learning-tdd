@@ -106,14 +106,14 @@ describe("StringCalculator", () => {
     expect(sum).toBe(expectedSum)
   })
 
-  it.each([["//[*][%]\n1*2%3", 6]])(
-    "adds the sum when it multiple single-length custom delimiters",
-    (numbers, expectedSum) => {
-      const stringCalculator = new StringCalculator()
+  it.each([
+    ["//[*][%]\n1*2%3", 6],
+    ["//[@][^]\n1@2^3", 6],
+  ])("adds the sum when it adds multiple single-length custom delimiters", (numbers, expectedSum) => {
+    const stringCalculator = new StringCalculator()
 
-      const sum = stringCalculator.add(numbers)
+    const sum = stringCalculator.add(numbers)
 
-      expect(sum).toBe(expectedSum)
-    },
-  )
+    expect(sum).toBe(expectedSum)
+  })
 })
