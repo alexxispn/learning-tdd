@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest"
 import { StringCalculator } from "./StringCalculator.js"
+import { NegativeNumbersNotAllowedError } from "./NegativeNumbersNotAllowedError.js"
 
 describe("StringCalculator", () => {
   it.each(["", " ", "  ", "   ", "    "])("adds 0 when it receives an empty string", (numbers) => {
@@ -67,4 +68,10 @@ describe("StringCalculator", () => {
       expect(sum).toBe(3)
     },
   )
+
+  it("throws if receive negative numbers", () => {
+    const stringCalculator = new StringCalculator()
+
+    expect(() => stringCalculator.add("1, -2, -3")).toThrowError(new NegativeNumbersNotAllowedError([-2, -3]))
+  })
 })
