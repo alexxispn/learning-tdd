@@ -29,21 +29,23 @@ export class StringCalculator {
     }
   }
 
-  private extractValues(text: string, customDelimiter: string): string[] {
-    const delimiters = [",", "\n", customDelimiter]
+  private extractValues(text: string, customDelimiter: string[]): string[] {
+    const delimiters = [",", "\n", ...customDelimiter]
     const delimiterRegex = new RegExp(`[${delimiters.join("")}]`)
     return text.split(delimiterRegex)
   }
 
   private extractCustomDelimiter(text: string) {
+    const hasMultipleSingleCharDelimiters = text.includes("[*][%]")
+    if (hasMultipleSingleCharDelimiters) return ["*", "%"]
     const hasCustomMultipleCharacterDelimiter = text.startsWith("//[")
     const hasCustomSingleCharacterDelimiter = text.startsWith("//")
     if (hasCustomMultipleCharacterDelimiter) {
-      return text.slice(3, text.indexOf("]"))
+      return [text.slice(3, text.indexOf("]"))]
     }
     if (hasCustomSingleCharacterDelimiter) {
-      return text.slice(2, 3)
+      return [text.slice(2, 3)]
     }
-    return ""
+    return [""]
   }
 }
