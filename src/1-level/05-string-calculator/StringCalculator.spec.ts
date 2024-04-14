@@ -78,4 +78,12 @@ describe("StringCalculator", () => {
 
     expect(sum).toBe(0)
   })
+
+  it("ignores numbers greater than 1000", () => {
+    const stringCalculator = new StringCalculator()
+
+    const sum = stringCalculator.add("1001, 2")
+
+    expect(sum).toBe(2)
+  })
 })
