@@ -7,7 +7,7 @@ export class StringCalculator {
     const delimiters = this.getDelimiters(text)
     const extractedValues = this.extractValues(text, delimiters)
     const numbers = this.parseToNumbers(extractedValues)
-    const validNumbers = this.removeNumbersGreaterThan1000(numbers)
+    const validNumbers = this.validateNumbers(numbers)
     return this.sumNumbers(validNumbers)
   }
 
@@ -15,20 +15,24 @@ export class StringCalculator {
     return extractedNumbers.reduce((sum, number) => sum + number, 0)
   }
 
+  private validateNumbers(numbers: number[]): number[] {
+    this.ensureHasNoNegativeNumbers(numbers)
+    return this.removeNumbersGreaterThan1000(numbers)
+  }
+
+  private ensureHasNoNegativeNumbers(numbers: number[]) {
+    const negativeNumbers = numbers.filter((number) => number < 0)
+    if (negativeNumbers.length > 0) {
+      throw new NegativeNumbersNotAllowedError(negativeNumbers)
+    }
+  }
+
   private removeNumbersGreaterThan1000(numbers: number[]): number[] {
     return numbers.filter((number) => number <= 1000)
   }
 
   private parseToNumbers(values: string[]): number[] {
-    this.ensureHasNoNegativeNumbers(values)
     return values.map(Number).filter((number) => !isNaN(number))
-  }
-
-  private ensureHasNoNegativeNumbers(values: string[]): void {
-    const negativeNumbers = values.map(Number).filter((number) => number < 0)
-    if (negativeNumbers.length) {
-      throw new NegativeNumbersNotAllowedError(negativeNumbers)
-    }
   }
 
   private extractValues(text: string, customDelimiter: string[]): string[] {
@@ -39,10 +43,10 @@ export class StringCalculator {
 
   private getDelimiters(text: string) {
     const hasCustomDelimiter = text.startsWith("//")
-    return hasCustomDelimiter ? this.extractCustomDelimiter(text) : StringCalculator.defaultDelimiters
+    return hasCustomDelimiter ? this.extractCustomDelimiters(text) : StringCalculator.defaultDelimiters
   }
 
-  private extractCustomDelimiter(text: string): string[] {
+  private extractCustomDelimiters(text: string): string[] {
     const endOfDelimitersIndex = text.indexOf("\n")
     const delimiterFragment = text.substring(2, endOfDelimitersIndex)
 
