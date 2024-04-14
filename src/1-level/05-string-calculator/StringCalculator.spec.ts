@@ -48,4 +48,12 @@ describe("StringCalculator", () => {
 
     expect(sum).toBe(45)
   })
+
+  it("adds the sum when numbers are separated by a new line or a comma", () => {
+    const stringCalculator = new StringCalculator()
+
+    const sum = stringCalculator.add("1\n2,3")
+
+    expect(sum).toBe(6)
+  })
 })
